@@ -16,6 +16,20 @@ def f_grad(x, y, epsilon, alpha, m, n, eta):
     dfuncdy = x**(2*n) + 2*m * alpha / (2*m+1) * y**(2*m) + dhdy
     return dfuncdx, dfuncdy
 
+def case1(x, y, epsilon, alpha, m, n, eta):
+    h = x**(2 * np.max([n, m]) + epsilon) + y**(2 * np.max([n, m]) + epsilon)
+    return h
+    
+def case2(x, y, epsilon, alpha, m, n, eta):
+    dhdx = x**(2*m + 1)
+    return h
+
+
+def case2(x, y, epsilon, alpha, m, n, eta):
+    h = x**(2 * np.max([n, m]) + epsilon) + y**(2 * np.max([n, m]) + epsilon)
+    return h
+
+
 def GD(x0, y0, epsilon, alpha, m, n, eta, tol=1e-4, max_iter=1e3):
     err = 1
     k  = 0
