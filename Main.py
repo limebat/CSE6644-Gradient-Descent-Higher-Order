@@ -58,6 +58,11 @@ epsilons = [i * 0.1 for i in range(20)] #Range 0.1, 0.2, ... 1
 eta = 0.1
 x0 = 1
 y0 = 1
+dx = dy = 0.01
+
+x = np.arange(0, 1+dx, dx)
+y = np.arange(0, 1+dy, dy)
+X, Y = np.meshgrid(x, y)
 
 # Now solve for each epsilon -- order magnitude increase each time for each term for further incrases in power
 
@@ -92,3 +97,19 @@ ax.set_zlabel(f'$\epsilon$')
 
 plt.show()
 
+#Sketch function:
+
+dfuncdx, dfuncdy = f_grad(X, Y, epsilon, alpha, m, n, eta)
+
+print('the value of dfdx is:', dfuncdx)
+
+contour = ax.contour3D(X, Y, dfuncdx, 5, cmap='viridis')
+
+# Add labels and title
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('dfuncdx')
+plt.title('3D Contour Plot')
+
+# Show the plot
+plt.show()
