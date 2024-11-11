@@ -17,17 +17,16 @@ def f_grad(x, y, epsilon, alpha, m, n, eta):
     return dfuncdx, dfuncdy
 
 def case1(x, y, epsilon, alpha, m, n, eta):
-    h = x**(2 * np.max([n, m]) + epsilon) + y**(2 * np.max([n, m]) + epsilon)
+    h = x**(2 * m + epsilon) + y**(2 * m + epsilon)
     return h
     
 def case2(x, y, epsilon, alpha, m, n, eta):
-    dhdx = x**(2*m + 1)
-    return h
-
+    dhdx = x**(2 * m + epsilon) 
+    return dhdx
 
 def case3(x, y, epsilon, alpha, m, n, eta):
-    h = x**(2 * np.max([n, m]) + epsilon) + y**(2 * np.max([n, m]) + epsilon)
-    return h
+    dhdy = x**(2 * m + epsilon) + y**(2 * m - 1 + epsilon)
+    return dhdy
 
 
 def GD(x0, y0, epsilon, alpha, m, n, eta, tol=1e-4, max_iter=1e3):
