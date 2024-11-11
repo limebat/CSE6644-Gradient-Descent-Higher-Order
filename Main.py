@@ -25,7 +25,7 @@ def case2(x, y, epsilon, alpha, m, n, eta):
     return h
 
 
-def case2(x, y, epsilon, alpha, m, n, eta):
+def case3(x, y, epsilon, alpha, m, n, eta):
     h = x**(2 * np.max([n, m]) + epsilon) + y**(2 * np.max([n, m]) + epsilon)
     return h
 
