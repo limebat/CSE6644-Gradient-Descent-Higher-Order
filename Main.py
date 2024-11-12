@@ -52,8 +52,6 @@ def f_grad_case3(x, y, epsilon, alpha, m, n, eta):
     dfuncdy = x**(2*n) + 2*m * alpha / (2*m+1) * y**(2*m) + dhdy
     return dfuncdx, dfuncdy
 
-
-
 def GD(x0, y0, epsilon, alpha, m, n, eta, tol=1e-4, max_iter=1e3):
     err = 1
     k  = 0
@@ -126,11 +124,16 @@ plt.show()
 
 dfuncdx, dfuncdy = f_grad(X, Y, epsilon, alpha, m, n, eta)
 
-print('the value of dfdx is:', dfuncdx)
-
 plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
-# Show the plot
+plt.title('Gradient Field Visualization, General Function', fontsize=16)
+plt.xlabel('X-axis', fontsize=12)
+plt.ylabel('Y-axis', fontsize=12)
+plt.grid(True)
+
+plt.xlim([X.min(), X.max()])
+plt.ylim([Y.min(), Y.max()])
+
 plt.show()
 
 
@@ -138,32 +141,44 @@ plt.show()
 
 dfuncdx, dfuncdy = f_grad_case1(X, Y, epsilon, alpha, m, n, eta)
 
-print('the value of dfdx is:', dfuncdx)
-
 plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
-# Show the plot
+plt.title('Gradient Field Visualization, Case 1', fontsize=16)
+plt.xlabel('X-axis', fontsize=12)
+plt.ylabel('Y-axis', fontsize=12)
+plt.grid(True)
+
+plt.xlim([X.min(), X.max()])
+plt.ylim([Y.min(), Y.max()])
+
 plt.show()
 
 #Sketch function: Case 2
 
-
 dfuncdx, dfuncdy = f_grad_case2(X, Y, epsilon, alpha, m, n, eta)
-
-print('the value of dfdx is:', dfuncdx)
 
 plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
-# Show the plot
-plt.show()
+plt.title('Gradient Field Visualization, Case 2', fontsize=16)
+plt.xlabel('X-axis', fontsize=12)
+plt.ylabel('Y-axis', fontsize=12)
+plt.grid(True)
 
-#Sketch function: Case 3
+plt.xlim([X.min(), X.max()])
+plt.ylim([Y.min(), Y.max()])
+
+plt.show()
 
 dfuncdx, dfuncdy = f_grad_case3(X, Y, epsilon, alpha, m, n, eta)
 
-print('the value of dfdx is:', dfuncdx)
-
 plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
-# Show the plot
+plt.title('Gradient Field Visualization, Case 3', fontsize=16)
+plt.xlabel('X-axis', fontsize=12)
+plt.ylabel('Y-axis', fontsize=12)
+plt.grid(True)
+
+plt.xlim([X.min(), X.max()])
+plt.ylim([Y.min(), Y.max()])
+
 plt.show()
