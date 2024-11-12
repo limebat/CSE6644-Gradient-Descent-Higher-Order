@@ -103,13 +103,8 @@ dfuncdx, dfuncdy = f_grad(X, Y, epsilon, alpha, m, n, eta)
 
 print('the value of dfdx is:', dfuncdx)
 
-contour = ax.contour3D(X, Y, dfuncdx, 5, cmap='viridis')
+plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
-# Add labels and title
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('dfuncdx')
-plt.title('3D Contour Plot')
 
 # Show the plot
 plt.show()
