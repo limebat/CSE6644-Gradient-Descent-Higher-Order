@@ -28,6 +28,31 @@ def case3(x, y, epsilon, alpha, m, n, eta):
     dhdy = x**(2 * m + epsilon) + y**(2 * m - 1 + epsilon)
     return dhdy
 
+def f_grad_case1(x, y, epsilon, alpha, m, n, eta):
+    exp_coeff_max = 2 * m + epsilon
+    dhdx = exp_coeff_max * x**(exp_coeff_max - 1) 
+    dfuncdx = y*(2*n * x**(2*n - 1) + dhdx)
+    dhdy = exp_coeff_max * y**(exp_coeff_max - 1) 
+    dfuncdy = x**(2*n) + 2*m * alpha / (2*m+1) * y**(2*m) + dhdy
+    return dfuncdx, dfuncdy
+
+def f_grad_case2(x, y, epsilon, alpha, m, n, eta):
+    exp_coeff_max = 2 * np.max([n, m]) + epsilon
+    dhdx =  case2(x, y, epsilon, alpha, m, n, eta)
+    dfuncdx = y*(2*n * x**(2*n - 1) + dhdx)
+    dhdy = exp_coeff_max * y**(exp_coeff_max - 1) 
+    dfuncdy = x**(2*n) + 2*m * alpha / (2*m+1) * y**(2*m) + dhdy
+    return dfuncdx, dfuncdy
+
+def f_grad_case3(x, y, epsilon, alpha, m, n, eta):
+    exp_coeff_max = 2 * np.max([n, m]) + epsilon
+    dhdx = exp_coeff_max * x**(exp_coeff_max - 1) 
+    dfuncdx = y*(2*n * x**(2*n - 1) + dhdx)
+    dhdy = case3(x, y, epsilon, alpha, m, n, eta) 
+    dfuncdy = x**(2*n) + 2*m * alpha / (2*m+1) * y**(2*m) + dhdy
+    return dfuncdx, dfuncdy
+
+
 
 def GD(x0, y0, epsilon, alpha, m, n, eta, tol=1e-4, max_iter=1e3):
     err = 1
@@ -97,7 +122,7 @@ ax.set_zlabel(f'$\epsilon$')
 
 plt.show()
 
-#Sketch function:
+#Sketch function: General case
 
 dfuncdx, dfuncdy = f_grad(X, Y, epsilon, alpha, m, n, eta)
 
@@ -105,6 +130,40 @@ print('the value of dfdx is:', dfuncdx)
 
 plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
+# Show the plot
+plt.show()
+
+
+#Sketch function: Case 1
+
+dfuncdx, dfuncdy = f_grad_case1(X, Y, epsilon, alpha, m, n, eta)
+
+print('the value of dfdx is:', dfuncdx)
+
+plt.quiver(X, Y, -dfuncdx, -dfuncdy)
+
+# Show the plot
+plt.show()
+
+#Sketch function: Case 2
+
+
+dfuncdx, dfuncdy = f_grad_case2(X, Y, epsilon, alpha, m, n, eta)
+
+print('the value of dfdx is:', dfuncdx)
+
+plt.quiver(X, Y, -dfuncdx, -dfuncdy)
+
+# Show the plot
+plt.show()
+
+#Sketch function: Case 3
+
+dfuncdx, dfuncdy = f_grad_case3(X, Y, epsilon, alpha, m, n, eta)
+
+print('the value of dfdx is:', dfuncdx)
+
+plt.quiver(X, Y, -dfuncdx, -dfuncdy)
 
 # Show the plot
 plt.show()
